@@ -11,7 +11,9 @@ export const AboutSection = ({ homepage }: AboutSectionProps) => {
 	return (
 		<div id="about" className="upperspacer">
 			<h1>About</h1>
-			<ReactMarkdown>{homepage.attributes?.aboutText ?? ""}</ReactMarkdown>
+			<div>
+				<ReactMarkdown>{homepage.attributes?.aboutText ?? ""}</ReactMarkdown>
+			</div>
 		</div>
 	);
 };

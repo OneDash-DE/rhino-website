@@ -163,6 +163,7 @@ export type Homepage = {
 	heroImage: UploadFileEntityResponse;
 	imprint: Scalars["String"];
 	liveText: Scalars["String"];
+	logoImage?: Maybe<UploadFileEntityResponse>;
 	metaDescription: Scalars["String"];
 	metaKeywords: Scalars["String"];
 	metaPageUrl: Scalars["String"];
@@ -188,6 +189,7 @@ export type HomepageInput = {
 	heroImage?: InputMaybe<Scalars["ID"]>;
 	imprint?: InputMaybe<Scalars["String"]>;
 	liveText?: InputMaybe<Scalars["String"]>;
+	logoImage?: InputMaybe<Scalars["ID"]>;
 	metaDescription?: InputMaybe<Scalars["String"]>;
 	metaKeywords?: InputMaybe<Scalars["String"]>;
 	metaPageUrl?: InputMaybe<Scalars["String"]>;
@@ -1321,6 +1323,14 @@ export const HomepageDocument = gql`
 					metaTitle
 					metaKeywords
 					metaPageUrl
+					logoImage {
+						data {
+							id
+							attributes {
+								...BasicImage
+							}
+						}
+					}
 					heroImage {
 						data {
 							id
@@ -1511,6 +1521,22 @@ export type HomepageQuery = {
 				metaTitle: string;
 				metaKeywords: string;
 				metaPageUrl: string;
+				logoImage?: {
+					__typename?: "UploadFileEntityResponse";
+					data?: {
+						__typename?: "UploadFileEntity";
+						id?: string | null;
+						attributes?: {
+							__typename?: "UploadFile";
+							url: string;
+							alternativeText?: string | null;
+							width?: number | null;
+							height?: number | null;
+							caption?: string | null;
+							previewUrl?: string | null;
+						} | null;
+					} | null;
+				} | null;
 				heroImage: {
 					__typename?: "UploadFileEntityResponse";
 					data?: {

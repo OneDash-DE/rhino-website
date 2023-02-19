@@ -25,6 +25,7 @@
 		"onedash-dialog": "^1.4.2",
 		"photoswipe": "^5.3.5",
 		"react": "18.2.0",
+		"react-cookie-consent": "^8.0.1",
 		"react-dom": "18.2.0",
 		"react-markdown": "^8.0.5",
 		"react-photoswipe-gallery": "^2.2.6",

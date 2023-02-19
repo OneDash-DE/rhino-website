@@ -11,6 +11,7 @@ import { Footer } from "./footer/footer";
 import { ContentDialog } from "@/dialogs/content-dialog";
 import { useLocalStorage } from "@/logic/use-local-storage-hook";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import { CookieInfo } from "./cookie-info";
 
 export interface LandingPageProps {
 	socialMediaLinks: SocialMediaEntity[];
@@ -29,7 +30,7 @@ export const LandingPage = (props: LandingPageProps) => {
 
 	return (
 		<div>
-			<Header socialMediaLinks={props.socialMediaLinks} />
+			<Header socialMediaLinks={props.socialMediaLinks} homepage={props.homepage} />
 			<Navigation socialMediaLinks={props.socialMediaLinks} />
 			<HeroImage homepage={props.homepage} />
 
@@ -81,6 +82,8 @@ export const LandingPage = (props: LandingPageProps) => {
 			<ContentDialog isOpen={termsAndConditionsDialogOpen} onClose={() => setTermsAndConditionsDialogOpen(false)}>
 				<ReactMarkdown>{props.homepage.attributes?.termsAndConditions ?? ""}</ReactMarkdown>
 			</ContentDialog>
+
+			<CookieInfo onPrivacyPolicyClick={() => setPrivacyPolicyDialogOpen(true)} />
 		</div>
 	);
 };

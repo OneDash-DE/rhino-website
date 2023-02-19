@@ -13,7 +13,7 @@ export const AudioSection = ({ externalContent, onPrivacyPolicyClick }: AudioSec
 		<div className="upperspacer" id="audio">
 			<h1>Audio</h1>
 			<div className={styles.list}>
-				<div className={styles.grid}>
+				<div className={styles.list}>
 					{externalContent.youtubeVideos?.data.map((link) => (
 						<ExternalContent
 							key={link.id}

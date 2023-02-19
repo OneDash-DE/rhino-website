@@ -5,6 +5,9 @@ import dayjs from "dayjs";
 import { DialogUtils } from "onedash-dialog";
 import { useEffect } from "react";
 import Script from "next/script";
+import CookieConsent from "react-cookie-consent";
+import { useLocalStorage } from "@/logic/use-local-storage-hook";
+
 dayjs.extend(localizedFormat);
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -31,6 +34,7 @@ _paq.push(['enableLinkTracking']);
  g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
  })();`}
 			</Script>
+
 			<Component {...pageProps} />
 		</>
 	);

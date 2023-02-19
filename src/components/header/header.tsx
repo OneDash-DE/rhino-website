@@ -1,14 +1,17 @@
 import Image from "next/image";
 import React from "react";
-import { SocialMediaEntity } from "types/gql-api";
+import { HomepageEntity, SocialMediaEntity } from "types/gql-api";
 import { SocialMediaIcons } from "../social-media-icons/social-media-icons";
 import styles from "./header.module.sass";
 
 interface HeaderProps {
 	socialMediaLinks: SocialMediaEntity[];
+	homepage: HomepageEntity;
 }
 
-export const Header = ({ socialMediaLinks }: HeaderProps) => {
+export const Header = ({ socialMediaLinks, homepage }: HeaderProps) => {
+	const logoUrl = homepage.attributes?.logoImage?.data?.attributes?.url;
+	console.log(logoUrl);
 	return (
 		<header className={styles.header}>
 			<SocialMediaIcons socialMediaLinks={socialMediaLinks} />

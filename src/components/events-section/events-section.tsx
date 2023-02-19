@@ -29,7 +29,7 @@ export const EventsSection = (props: EventsSectionProps) => {
 							{events.map((event) => (
 								<React.Fragment key={event.id}>
 									<div>{event.attributes?.name}</div>
-									<div>{dayjs(event.attributes?.date).format("LLL")}</div>
+									<div>{dayjs(event.attributes?.date).format("DD.MM.YYYY")}</div>
 									<div>
 										<ReactMarkdown>{event.attributes?.description ?? ""}</ReactMarkdown>
 									</div>

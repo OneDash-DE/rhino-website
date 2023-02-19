@@ -27,8 +27,8 @@ export const Photos = (props: PhotosProps) => {
 									// eslint-disable-next-line @next/next/no-img-element
 									<Image
 										ref={ref as any}
-										width={150}
-										height={150}
+										width={250}
+										height={250}
 										alt={photo.attributes?.alternativeText ?? ""}
 										onClick={open}
 										src={photo.attributes?.url ?? ""}

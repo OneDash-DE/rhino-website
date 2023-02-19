@@ -63,10 +63,11 @@ export async function getStaticProps() {
 	const externalRes = await apolloClient.query<ExternalContentQuery>({ query: ExternalContentDocument });
 	const eventsRes = await apolloClient.query<EventsQuery>({ query: EventsDocument });
 	const photoRes = await apolloClient.query<PhotosQuery>({ query: PhotosDocument });
+
 	return {
 		props: {
 			socialMediaLinks: socialMediaRes?.data.socialMedias?.data ?? [],
-			homepage: homepageRes.data.homepage?.data,
+			homepage: homepageRes?.data.homepage?.data,
 			externalContent: externalRes.data,
 			events: eventsRes.data.events?.data ?? [],
 			photos: photoRes.data.photo?.data?.attributes?.photos.data ?? [],

@@ -11,6 +11,14 @@ query homepage {
 				metaTitle
 				metaKeywords
 				metaPageUrl
+				logoImage {
+					data {
+						id
+						attributes {
+							...BasicImage
+						}
+					}
+				}
 				heroImage {
 					data {
 						id
