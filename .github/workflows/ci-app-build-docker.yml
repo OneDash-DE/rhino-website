@@ -27,7 +27,7 @@ jobs:
         env:
           APP_KEYS: ${{ secrets.APP_KEYS }}
           API_TOKEN_SALT: ${{ secrets.API_TOKEN_SALT }}
-          ADMIN_JWT_SECRET: ${{ sects.ADMIN_JWT_SECRET }}
+          ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET }}
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
       - name: Login to docker registry
