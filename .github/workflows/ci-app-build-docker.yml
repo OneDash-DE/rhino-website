@@ -27,7 +27,7 @@ jobs:
         env:
           APP_KEYS: ${{ secrets.APP_KEYS }}
           API_TOKEN_SALT: ${{ secrets.API_TOKEN_SALT }}
-          ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET }}
+          ADMIN_JWT_SECRET: ${{ sects.ADMIN_JWT_SECRET }}
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
       - name: Login to docker registry
@@ -41,7 +41,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v3
         with:
-          context: .
+          context: ./backend
           push: true
           tags: ${{ secrets.BACKEND_IMAGE_NAME }}:latest
 
@@ -83,6 +83,6 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v3
         with:
-          context: .
+          context: ./frontend
           push: true
           tags: ${{ secrets.FRONTEND_IMAGE_NAME }}:latest
