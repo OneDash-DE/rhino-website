@@ -1,0 +1,461 @@
+////Imports////
+$hamburger-thickness: 3px
+$hamburger-color: #000000
+$hamburger-color-active: #000
+$hamburger-background: #ffffffe1
+$hamburger-background-active: transparent
+$hamburger-padding: 10px
+$hamburger-border-radius: 25px
+$hamburger-bar-border-radius: 2px
+
+@import "~delicious-hamburgers/scss/base"
+@import "~delicious-hamburgers/scss/animations/collapse"
+
+////Fonts////
+@font-face
+	font-family: Leorio
+	src: url("../assets/fonts/Leorio.woff") format("woff"), url("../assets/fonts/Leorio.ttf") format("ttf")
+	font-display: swap
+@font-face
+	font-family: Westmeath
+	src: url("../assets/fonts/Westmeath.woff") format("woff"), url("../assets/fonts/Westmeath.ttf") format("ttf")
+	font-display: swap
+
+////Variables////
+:root
+	--margin-inner: 180px
+	--margin-outer: 180px
+	--corner-roundness: 5px
+	@media only screen and (max-width: 1440px)
+		--margin-inner: 100px
+		--margin-outer: 120px
+	@media only screen and (max-width: 1000px)
+		--margin-inner: 50px
+		--margin-outer: 60px
+	@media only screen and (max-width: 720px)
+		--margin-inner: 25px
+		--margin-outer: 35px
+	@media only screen and (max-width: 480px)
+		--margin-inner: 0px
+		--margin-outer: 20px
+
+html
+	scroll-behavior: smooth
+	font-family: Leorio, "Bookman Old Style"
+	font-size: 25px
+	@media only screen and (max-width: 720px)
+		font-size: 20px
+
+body
+	background-image: url("../assets/images/background.jpg")
+	background-size: contain
+	margin: 0px
+	padding: 0px
+	color: white
+	line-height: 1.5
+
+h1
+	font-size: 2.5em
+	margin: 10px 0 20px 0
+	line-height: normal
+	@media only screen and (max-width: 720px)
+		font-size: 1.5em
+
+p
+	margin: 0 var(--margin-inner)
+	text-align: justify
+
+////classes////
+
+.header__text
+	position: relative
+	text-align: center
+	color: rgb(250, 250, 250)
+	font-family: acumin-pro
+	font-size: 6em
+	font-weight: bold
+	line-height: normal
+	max-width: 100%
+	margin: -30px 0 -15px 0
+	@media only screen and (max-width: 1440px)
+		font-size: 5em
+		margin: -15px 0 0 0 0
+	@media only screen and (max-width: 1000px)
+		font-size: 4.5em
+	@media only screen and (max-width: 720px)
+		font-size: 4em
+		margin: -10px 0 0 0
+		//box-shadow: 0px 10px 10px 7px rgba(0, 0, 0, 0.61)
+	@media only screen and (max-width: 480px)
+		font-size: 3em
+		margin: -8px 0 0 0
+
+.profilepicture
+	display: block
+	margin: 0 auto 0 auto
+	width: 100vw
+	max-width: 100%
+	@media only screen and (max-width: 720px)
+		border-top: solid white 4px
+
+.navigation
+	display: flex
+	justify-content: center
+	align-items: center
+	z-index: 20
+	background-image: linear-gradient(to right top, #ffffff90, #ffffffa0,#ffffffb0, #ffffffc0, #ffffffd0)
+	box-shadow: 0px 10px 10px 7px rgba(0, 0, 0, 0.61)
+	backdrop-filter: blur(4px)
+	-webkit-backdrop-filter: blur(4px)
+	position: sticky
+	top: 0px
+	font-size: 1.2em
+	text-align: center --webkit-center
+	word-spacing: 1em
+	letter-spacing: -0.05em
+	line-height: normal
+
+	@media only screen and (max-width: 720px)
+		transition: 0.3s all ease-in-out
+		overflow: hidden
+		position: fixed
+		top: 0
+		right: -100vw
+		width: 100%
+		height: 100%
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+		font-size: 3em
+
+		.nav-items
+			position: relative
+			z-index: 21
+			display: flex
+			flex-direction: column
+			align-items: center
+			justify-content: center
+			height: 100%
+		.nav-bg
+			position: fixed
+			top: 0
+			left: 0
+			bottom: 0
+			right: 0
+	a
+		display: inline-block
+		color: black
+		padding: 2px 15px
+		text-decoration: none
+		&:hover
+			background-color: rgb(0, 0, 0, 0.61)
+			color: rgb(255, 255, 255)
+			transition: all ease-in-out 0.1s
+.open
+	right: 0
+
+.nav-icon
+	font-size: 1em
+	position: fixed
+	z-index: 20
+	bottom: var(--margin-outer)
+	right: var(--margin-outer)
+	border: none
+	text-shadow: 3px 3px 3px black
+	@media only screen and (min-width: 721px)
+		display: none
+
+.socialmedia__icons
+	filter: invert(100%)
+	position: absolute
+	left: 30px
+	margin: 85px 0 0 0
+	display: grid
+	grid-template-rows: 1fr
+	grid-template-columns: repeat(6, 1fr)
+	align-items: center
+	justify-content: center
+	font-size: 0px
+	height: auto
+	z-index: 1
+	@media only screen and (max-width: 1440px)
+		margin: 45px 0 0 0
+		grid-template-rows: repeat(2, 1fr)
+		grid-template-columns: repeat(3, 1fr)
+	@media only screen and (max-width: 1000px)
+		margin: 40px 0 0 0
+		left: 15px
+		grid-template-rows: repeat(3, 1fr)
+		grid-template-columns: repeat(2, 1fr)
+	@media only screen and (max-width: 720px)
+		display: none
+	& img
+		margin: 10px
+		width: 35px
+		height: auto
+		@media only screen and (max-width: 1000px)
+			margin: 5px
+			width: 22px
+		&:hover
+			filter: invert(20%)
+			transition: all ease-in-out 0.1s
+
+	& a
+		height: auto
+	&-navbar
+		left: 0
+		margin: 0
+		position: relative
+		display: grid
+		grid-template-rows: 1fr 1fr
+		grid-template-columns: repeat(3, 1fr)
+		z-index: 50
+		filter: none
+		margin: 20px
+		a
+			padding: 0px
+		img
+			margin: 10px 20px
+			width: 35px
+
+		@media only screen and (min-width: 721px)
+			display: none
+
+.cookiebar
+	position: fixed
+	display: flex
+	align-items: center
+	flex-direction: row
+	z-index: 20
+	font-size: 0.8em
+	bottom: 0
+	color: black
+	width: 100%
+	padding: 50px 0px
+	height: fit-content
+	background-image: linear-gradient(to right top, #ffffff90, #ffffffa0,#ffffffb0, #ffffffc0, #ffffffd0)
+	backdrop-filter: blur(4px)
+	-webkit-backdrop-filter: blur(4px)
+
+	transition: 0.3s all ease-in-out
+	@media only screen and (max-width: 720px)
+		padding: 25px 0
+
+	&.fade-out
+		bottom: -200px
+
+	p
+		text-align: left
+		width: auto
+		margin: 0 40px
+		@media only screen and (max-width: 720px)
+			margin: 0 15px
+	button
+		font: inherit
+		color: white
+		border: none
+		background-color: #1d1d1d
+		padding: 5px 25px
+		margin: 0 10px
+		border-radius: 10px
+		cursor: pointer
+		right: 40px
+		@media only screen and (max-width: 720px)
+			margin: 10px 0 0 20px
+		&:hover
+			background-color: #424242
+			transition: all ease-in-out 0.1s
+	& .buttonwrapper
+		display: flex
+		margin: 0 40px 0 0
+		@media only screen and (max-width: 720px)
+			flex-direction: column
+			margin: 0 15px 0 0
+
+.content-wrapper
+	margin: 0 var(--margin-outer)
+	p
+		@media only screen and (max-width: 1000px)
+			font-size: 0.9em
+
+		@media only screen and (max-width: 720px)
+			font-size: 0.8em
+
+.hidden
+	display: none
+
+.l-audio
+	position: relative
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+	margin: 0 var(--margin-inner)
+
+	.external-content
+		position: relative
+		width: 100%
+		margin: 15px 0
+		iframe
+			position: absolute
+			top: 0
+			left: 0
+			bottom: 0
+			right: 0
+			width: 100%
+			height: 100%
+			margin: 0px
+
+		&-youtube, &-youtube label
+			height: 600px
+			@media only screen and (max-width: 1440px)
+				height: 500px
+			@media only screen and (max-width: 1000px)
+				height: 440px
+			@media only screen and (max-width: 720px)
+				height: 340px
+			@media only screen and (max-width: 480px)
+				height: 200px
+		&-spotify, &-spotify label
+			height: 240px
+
+	label
+		display: flex
+		border: dashed
+		align-items: center
+		padding: 0px 30px
+		cursor: pointer
+		&:hover span
+			border-color: black
+		span
+			margin-right: .8rem
+			position: relative
+			display: inline-block
+			top: 0
+			left: 0
+			height: 1.6rem
+			width: 1.6rem
+			border: .1rem solid #5a5856
+			border-radius: .3rem
+			background-color: #fff
+			flex-shrink: 0
+
+.upperspacer
+	margin-top: 50px
+	padding: 20px 0 0 0
+	border-top: 4px solid
+	position: relative
+	@media only screen and (max-width: 720px)
+		margin-top: 35px
+	@media only screen and (max-width: 480px)
+		margin-top: 20px
+
+.photos
+	display: grid
+	grid-template-columns: repeat(4, 1fr)
+	grid-template-rows: repeat(4, 1fr)
+	gap: 15px
+	margin: 0 var(--margin-inner)
+
+	@media only screen and (max-width: 1000px)
+		grid-template-columns: repeat(3, 1fr)
+		grid-template-rows: repeat(5, 1fr)
+	@media only screen and (max-width: 480px)
+		grid-template-columns: repeat(2, 1fr)
+		grid-template-rows: repeat(8, 1fr)
+
+	img
+		max-width: 100%
+		border-radius: var(--corner-roundness)
+.lightbox
+	display: none
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	z-index: 50
+	background-color: #68686877
+	backdrop-filter: blur(5px)
+	-webkit-backdrop-filter: blur(5px)
+
+	img
+		display: none
+		border-radius: calc(var(--corner-roundness) *2)
+
+	&-open
+		display: flex
+		justify-content: center
+		align-items: center
+
+.isExpanded
+	position: relative
+	z-index: 60
+	transition: 0.3s all ease-in-out
+
+	img
+		display: flex
+		margin: auto
+		width: auto
+		height: auto
+		max-height: 80vh
+		max-width: 80vw
+
+.modal
+	position: fixed
+	display: none
+	align-items: center
+	justify-content: center
+	top: 0
+	left: 0
+	background-color: #68686877
+	margin: auto
+	height: 100%
+	width: 100%
+	backdrop-filter: blur(5px)
+	-webkit-backdrop-filter: blur(5px)
+	z-index: 50
+	&-text
+		height: 80vh
+		width: 80vw
+		background-image: linear-gradient(to right bottom, #0b0b0b, #0d0d0d, #0e0e0e, #101010, #111111)
+
+	iframe
+		border: none
+		height: 100%
+		width: 100%
+.openModal
+	display: flex
+
+.footer
+	font-size: 0.6em
+	width: 100%
+	margin-top: 100px
+	background-image: linear-gradient( to bottom right, #1a1a1a, #151515, #101010, #080808, #000000)
+	box-shadow: 0px 0px 14px 7px #000000cb
+	display: flex
+	flex-direction: row
+	align-items: center
+	justify-content: center
+	@media only screen and (max-width: 1000px)
+		flex-direction: column
+
+	p
+		margin: 10px 50px
+		text-align: center
+
+		@media only screen and (max-width: 720px)
+			margin: 10px 25px
+
+	a
+		color: white
+		margin: 10px 50px
+		text-align: center
+		text-decoration: underline
+		cursor: pointer
+
+.scrollto
+	position: absolute
+	top: -100px
+	z-index: -1

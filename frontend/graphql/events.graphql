@@ -1,0 +1,12 @@
+query events {
+	events {
+		data {
+			id
+			attributes {
+				date
+				description
+				name
+			}
+		}
+	}
+}

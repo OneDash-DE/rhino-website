@@ -1,0 +1,34 @@
+query homepage {
+	homepage {
+		data {
+			attributes {
+				aboutText
+				termsAndConditions
+				privacyPolicy
+				imprint
+				liveText
+				metaDescription
+				metaTitle
+				metaKeywords
+				metaPageUrl
+				heroImage {
+					data {
+						id
+						attributes {
+							...BasicImage
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+fragment BasicImage on UploadFile {
+	url
+	alternativeText
+	width
+	height
+	caption
+	previewUrl
+}

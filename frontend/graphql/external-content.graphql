@@ -1,0 +1,18 @@
+query externalContent {
+	spotifyLinks {
+		data {
+			id
+			attributes {
+				embeddedLink
+			}
+		}
+	}
+	youtubeVideos {
+		data {
+			id
+			attributes {
+				embeddedLink
+			}
+		}
+	}
+}

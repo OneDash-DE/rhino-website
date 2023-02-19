@@ -1,0 +1,108 @@
+@import "./fonts.scss";
+@import "./onedash-dialog.scss";
+
+$hamburger-thickness: 3px;
+$hamburger-color: #000000;
+$hamburger-color-active: #000;
+$hamburger-background: #ffffffe1;
+$hamburger-background-active: transparent;
+$hamburger-padding: 10px;
+$hamburger-border-radius: 25px;
+$hamburger-bar-border-radius: 2px;
+
+@import "~delicious-hamburgers/scss/base";
+@import "~delicious-hamburgers/scss/animations/collapse";
+
+:root {
+	--margin-inner: 180px;
+	--margin-outer: 180px;
+	--corner-roundness: 5px;
+	@media only screen and (max-width: 1440px) {
+		--margin-inner: 100px;
+		--margin-outer: 120px;
+	}
+	@media only screen and (max-width: 1000px) {
+		--margin-inner: 50px;
+		--margin-outer: 60px;
+	}
+	@media only screen and (max-width: 720px) {
+		--margin-inner: 25px;
+		--margin-outer: 35px;
+	}
+	@media only screen and (max-width: 480px) {
+		--margin-inner: 0px;
+		--margin-outer: 20px;
+	}
+}
+html {
+	scroll-behavior: smooth;
+	font-family: Leorio;
+	font-size: 25px;
+	background-color: #020403;
+	background-image: url("/images/background.webp");
+	background-size: 100vw;
+	@media only screen and (max-width: 720px) {
+		font-size: 20px;
+	}
+}
+body {
+	margin: 0px;
+	padding: 0px;
+	color: white;
+	line-height: 1.5;
+}
+h1 {
+	font-size: 2.5em;
+	margin: 10px 0 20px 0;
+	line-height: normal;
+	@media only screen and (max-width: 720px) {
+		font-size: 1.5em;
+	}
+}
+p {
+	text-align: justify;
+}
+
+button {
+	color: white;
+	transition: opacity 0.25s ease-in-out;
+	border: none;
+	padding: 0px;
+	background: none;
+	font-family: inherit;
+	font-size: inherit;
+	text-decoration: underline;
+	cursor: pointer;
+	&:hover {
+		opacity: 0.5;
+	}
+}
+.upperspacer {
+	margin-top: 85px;
+	padding: 50px 0 0 0;
+	border-top: 4px solid;
+	position: relative;
+	@media only screen and (max-width: 720px) {
+		margin-top: 35px;
+	}
+	@media only screen and (max-width: 480px) {
+		margin-top: 20px;
+	}
+}
+.content-wrapper {
+	margin: 0 auto;
+	max-width: 1600px;
+	@media only screen and (max-width: 1800px) {
+		margin: 0 var(--margin-outer);
+	}
+
+	p {
+		@media only screen and (max-width: 1000px) {
+			font-size: 0.9em;
+		}
+
+		@media only screen and (max-width: 720px) {
+			font-size: 0.8em;
+		}
+	}
+}

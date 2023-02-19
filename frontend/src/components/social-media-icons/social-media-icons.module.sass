@@ -1,0 +1,25 @@
+
+.icons
+    filter: invert(100%)
+    left: 30px
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    z-index: 1
+    font-size: 0px
+
+    @media only screen and (max-width: 720px)
+        a
+            display: none
+    & img
+        margin: 10px
+        width: 35px
+        height: auto
+        @media only screen and (max-width: 1000px)
+            margin: 5px
+            width: 22px
+        &:hover
+            filter: invert(20%)
+            transition: all ease-in-out 0.1s
+    & a
+        height: auto

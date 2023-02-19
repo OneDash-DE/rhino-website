@@ -1,0 +1,14 @@
+schema: http://127.0.0.1:1337/graphql
+documents: "graphql/**/*.graphql"
+extensions:
+    codegen:
+        hooks:
+            afterAllFileWrite:
+                - npx prettier --write
+        generates:
+            types/gql-api.tsx:
+                plugins:
+                    - typescript
+                    - typescript-react-apollo
+                    - typescript-operations
+                    - named-operations-object

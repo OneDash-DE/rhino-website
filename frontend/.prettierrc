@@ -1,0 +1,10 @@
+{
+	"bracketSameLine": true,
+	"endOfLine": "auto",
+	"jsonRecursiveSort": true,
+	"printWidth": 140,
+	"semi": true,
+	"singleQuote": false,
+	"tabWidth": 4,
+	"useTabs": true
+}

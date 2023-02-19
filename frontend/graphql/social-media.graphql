@@ -1,0 +1,17 @@
+query socialMedias {
+	socialMedias {
+		data {
+			id
+			attributes {
+				url
+				logo {
+					data {
+						attributes {
+							...BasicImage
+						}
+					}
+				}
+			}
+		}
+	}
+}

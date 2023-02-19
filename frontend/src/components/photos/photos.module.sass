@@ -1,0 +1,12 @@
+.photos
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))
+    gap: 1rem
+
+    img
+        border-radius: 0.25rem
+    .thumbnail
+        cursor: pointer
+        transition: opacity 0.25s ease
+        &:hover
+            opacity: 0.5

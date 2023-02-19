@@ -1,0 +1,64 @@
+{
+	"env": {
+		"browser": true,
+		"es6": true
+	},
+	"extends": [
+		"plugin:@typescript-eslint/recommended",
+		"prettier",
+		"plugin:prettier/recommended",
+		"plugin:unicorn/recommended",
+		"plugin:jsx-a11y/recommended",
+		"plugin:@next/next/recommended",
+		"plugin:react-hooks/recommended"
+	],
+	"globals": {
+		"Atomics": "readonly",
+		"SharedArrayBuffer": "readonly"
+	},
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 2020,
+		"project": "./tsconfig.json",
+		"sourceType": "module"
+	},
+	"plugins": ["@typescript-eslint", "unicorn", "react", "jsx-a11y"],
+	"root": true,
+	"rules": {
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/no-non-null-assertion": "off",
+		"curly": ["error", "all"],
+		"indent": "off",
+		"jsx-a11y/anchor-is-valid": "off",
+		"no-console": "error",
+		"prettier/prettier": [
+			"error",
+			{
+				"bracketSameLine": true,
+				"endOfLine": "auto",
+				"printWidth": 140,
+				"semi": true,
+				"singleQuote": false,
+				"tabWidth": 4,
+				"useTabs": true
+			}
+		],
+		"quotes": ["error", "double", { "avoidEscape": true }],
+		"semi": ["error", "always"],
+		"unicorn/consistent-function-scoping": "off",
+		"unicorn/no-array-reduce": "off",
+		"unicorn/no-null": "off",
+		"unicorn/prevent-abbreviations": "off"
+	},
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		}
+	}
+}

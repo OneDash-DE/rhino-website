@@ -1,0 +1,17 @@
+query photos {
+	photo {
+		data {
+			id
+			attributes {
+				photos {
+					data {
+						id
+						attributes {
+							...BasicImage
+						}
+					}
+				}
+			}
+		}
+	}
+}
