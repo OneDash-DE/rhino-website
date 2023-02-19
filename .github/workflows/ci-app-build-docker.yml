@@ -9,14 +9,15 @@ jobs:
     name: "Build backend"
     environment: staging
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
     steps:
       - uses: AutoModality/action-clean@v1
       - uses: actions/checkout@master
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-
-      - run: cd backend
 
       - name: 🏗 Install dependencies
         run: yarn
@@ -52,14 +53,16 @@ jobs:
     name: "Build frontend"
     environment: staging
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+
     steps:
       - uses: AutoModality/action-clean@v1
       - uses: actions/checkout@master
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-
-      - run: cd backend
 
       - name: 🏗 Install dependencies
         run: npm install --legacy-peer-deps
