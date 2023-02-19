@@ -7,6 +7,7 @@ jobs:
   build-backend:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     name: "Build backend"
+    environment: staging
     runs-on: ubuntu-latest
     steps:
       - uses: AutoModality/action-clean@v1
@@ -46,6 +47,7 @@ jobs:
   build-frontend:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     name: "Build frontend"
+    environment: staging
     runs-on: ubuntu-latest
     steps:
       - uses: AutoModality/action-clean@v1
