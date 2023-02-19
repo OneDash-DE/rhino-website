@@ -43,10 +43,11 @@ export const useLocalStorage = <T>(key: string, initialValue: T, trackingDimensi
 				setStoredValue(valueToStore);
 				if (typeof window !== "undefined") {
 					window.localStorage.setItem(key, JSON.stringify(valueToStore));
-					window.dispatchEvent(new Event("storage"));
 					if (trackingDimension) {
 						(window as any)._paq.push(["setCustomDimension", trackingDimension, JSON.stringify(valueToStore)]);
+						(window as any)._paq.push(["trackPageView"]);
 					}
+					window.dispatchEvent(new Event("storage"));
 				}
 			} catch (error) {
 				console.log(error);

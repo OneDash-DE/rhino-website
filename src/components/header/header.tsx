@@ -11,7 +11,6 @@ interface HeaderProps {
 
 export const Header = ({ socialMediaLinks, homepage }: HeaderProps) => {
 	const logoUrl = homepage.attributes?.logoImage?.data?.attributes?.url;
-	console.log(logoUrl);
 	return (
 		<header className={styles.header}>
 			<SocialMediaIcons socialMediaLinks={socialMediaLinks} />
