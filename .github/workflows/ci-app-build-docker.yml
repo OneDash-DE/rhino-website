@@ -16,6 +16,8 @@ jobs:
         with:
           node-version: 18
 
+      - run: cd backend
+
       - name: 🏗 Install dependencies
         run: yarn
 
@@ -56,6 +58,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+
+      - run: cd backend
 
       - name: 🏗 Install dependencies
         run: npm install --legacy-peer-deps
