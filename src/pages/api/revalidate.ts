@@ -6,8 +6,11 @@ const handler: NextApiHandler = async (req, res) => {
 		return res.status(401).send("Invalid API key");
 	}
 
+	console.log("Revalidating main page ...");
+
 	try {
 		await res.revalidate("/");
+		console.log("Revalidating finished");
 		return res.json({ revalidated: true });
 	} catch (err) {
 		return res.status(500).send("Error revalidating");

@@ -4,6 +4,14 @@ export const BACKEND_SERVER_URL = process.env.BACKEND_SERVER_URL ?? "http://127.
 const apolloClient = new ApolloClient({
 	uri: BACKEND_SERVER_URL,
 	cache: new InMemoryCache(),
+	defaultOptions: {
+		watchQuery: {
+			fetchPolicy: "no-cache",
+		},
+		query: {
+			fetchPolicy: "no-cache",
+		},
+	},
 });
 
 export default apolloClient;
