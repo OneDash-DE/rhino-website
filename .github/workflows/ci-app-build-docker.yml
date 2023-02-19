@@ -24,10 +24,11 @@ jobs:
 
       - name: Build app
         run: yarn build
-        env: APP_KEYS=${{ secrets.APP_KEYS }}
-          API_TOKEN_SALT=${{ secrets.API_TOKEN_SALT }}
-          ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }}
-          JWT_SECRET=${{ secrets.JWT_SECRET }}
+        env:
+          APP_KEYS: ${{ secrets.APP_KEYS }}
+          API_TOKEN_SALT: ${{ secrets.API_TOKEN_SALT }}
+          ADMIN_JWT_SECRET: ${{ secrets.ADMIN_JWT_SECRET }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
       - name: Login to docker registry
         uses: docker/login-action@v2
