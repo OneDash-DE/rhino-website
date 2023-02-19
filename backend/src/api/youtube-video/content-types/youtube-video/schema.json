@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "youtube_videos",
+  "info": {
+    "singularName": "youtube-video",
+    "pluralName": "youtube-videos",
+    "displayName": "Youtube Videos"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "embeddedLink": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

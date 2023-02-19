@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "spotify_links",
+  "info": {
+    "singularName": "spotify-link",
+    "pluralName": "spotify-links",
+    "displayName": "Spotify Links"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "embeddedLink": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
