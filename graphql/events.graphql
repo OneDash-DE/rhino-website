@@ -4,7 +4,6 @@ query events {
 			id
 			attributes {
 				date
-				description
 				name
 			}
 		}

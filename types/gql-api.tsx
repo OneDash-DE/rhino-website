@@ -13,6 +13,7 @@ export type Scalars = {
 	Boolean: boolean;
 	Int: number;
 	Float: number;
+	Date: any;
 	DateTime: any;
 	JSON: any;
 	Upload: any;
@@ -42,6 +43,30 @@ export type BooleanFilterInput = {
 	startsWith?: InputMaybe<Scalars["Boolean"]>;
 };
 
+export type DateFilterInput = {
+	and?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>;
+	between?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>;
+	contains?: InputMaybe<Scalars["Date"]>;
+	containsi?: InputMaybe<Scalars["Date"]>;
+	endsWith?: InputMaybe<Scalars["Date"]>;
+	eq?: InputMaybe<Scalars["Date"]>;
+	eqi?: InputMaybe<Scalars["Date"]>;
+	gt?: InputMaybe<Scalars["Date"]>;
+	gte?: InputMaybe<Scalars["Date"]>;
+	in?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>;
+	lt?: InputMaybe<Scalars["Date"]>;
+	lte?: InputMaybe<Scalars["Date"]>;
+	ne?: InputMaybe<Scalars["Date"]>;
+	not?: InputMaybe<DateFilterInput>;
+	notContains?: InputMaybe<Scalars["Date"]>;
+	notContainsi?: InputMaybe<Scalars["Date"]>;
+	notIn?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>;
+	notNull?: InputMaybe<Scalars["Boolean"]>;
+	null?: InputMaybe<Scalars["Boolean"]>;
+	or?: InputMaybe<Array<InputMaybe<Scalars["Date"]>>>;
+	startsWith?: InputMaybe<Scalars["Date"]>;
+};
+
 export type DateTimeFilterInput = {
 	and?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
 	between?: InputMaybe<Array<InputMaybe<Scalars["DateTime"]>>>;
@@ -69,8 +94,7 @@ export type DateTimeFilterInput = {
 export type Event = {
 	__typename?: "Event";
 	createdAt?: Maybe<Scalars["DateTime"]>;
-	date: Scalars["DateTime"];
-	description: Scalars["String"];
+	date: Scalars["Date"];
 	name: Scalars["String"];
 	updatedAt?: Maybe<Scalars["DateTime"]>;
 };
@@ -95,8 +119,7 @@ export type EventEntityResponseCollection = {
 export type EventFiltersInput = {
 	and?: InputMaybe<Array<InputMaybe<EventFiltersInput>>>;
 	createdAt?: InputMaybe<DateTimeFilterInput>;
-	date?: InputMaybe<DateTimeFilterInput>;
-	description?: InputMaybe<StringFilterInput>;
+	date?: InputMaybe<DateFilterInput>;
 	id?: InputMaybe<IdFilterInput>;
 	name?: InputMaybe<StringFilterInput>;
 	not?: InputMaybe<EventFiltersInput>;
@@ -106,8 +129,7 @@ export type EventFiltersInput = {
 };
 
 export type EventInput = {
-	date?: InputMaybe<Scalars["DateTime"]>;
-	description?: InputMaybe<Scalars["String"]>;
+	date?: InputMaybe<Scalars["Date"]>;
 	name?: InputMaybe<Scalars["String"]>;
 	sitemap_exclude?: InputMaybe<Scalars["Boolean"]>;
 };
@@ -162,7 +184,7 @@ export type Homepage = {
 	createdAt?: Maybe<Scalars["DateTime"]>;
 	heroImage: UploadFileEntityResponse;
 	imprint: Scalars["String"];
-	liveText: Scalars["String"];
+	liveText?: Maybe<Scalars["String"]>;
 	logoImage?: Maybe<UploadFileEntityResponse>;
 	metaDescription: Scalars["String"];
 	metaKeywords: Scalars["String"];
@@ -1226,7 +1248,6 @@ export const EventsDocument = gql`
 				id
 				attributes {
 					date
-					description
 					name
 				}
 			}
@@ -1475,7 +1496,7 @@ export type EventsQuery = {
 		data: Array<{
 			__typename?: "EventEntity";
 			id?: string | null;
-			attributes?: { __typename?: "Event"; date: any; description: string; name: string } | null;
+			attributes?: { __typename?: "Event"; date: any; name: string } | null;
 		}>;
 	} | null;
 };
@@ -1516,7 +1537,7 @@ export type HomepageQuery = {
 				termsAndConditions: string;
 				privacyPolicy: string;
 				imprint: string;
-				liveText: string;
+				liveText?: string | null;
 				metaDescription: string;
 				metaTitle: string;
 				metaKeywords: string;
