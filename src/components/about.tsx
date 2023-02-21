@@ -9,7 +9,7 @@ interface AboutSectionProps {
 
 export const AboutSection = ({ homepage }: AboutSectionProps) => {
 	return (
-		<div id="about" className="upperspacer">
+		<div id="about" className="upperspacer" style={{ marginTop: "10px" }}>
 			<h1>About</h1>
 			<div>
 				<ReactMarkdown>{homepage.attributes?.aboutText ?? ""}</ReactMarkdown>

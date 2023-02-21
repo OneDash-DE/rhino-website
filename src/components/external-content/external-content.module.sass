@@ -10,7 +10,7 @@
             height: 300px
             width: 100%
     &.spotify
-        height: 200px
+        height: 152px
     & > div
         height: calc(100% - 6px)
         display: flex
@@ -20,6 +20,9 @@
         flex-direction: column
         justify-content: center
         gap: 1rem
+
+        @media only screen and (max-width: 720px)
+            padding: 0px 20px
 
         p
             margin: 0

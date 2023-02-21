@@ -23,16 +23,12 @@ export const EventsSection = (props: EventsSectionProps) => {
 						<div className={classNames(styles.table, styles.header)}>
 							<div>Event</div>
 							<div>Date</div>
-							<div>Description</div>
 						</div>
 						<div className={classNames(styles.table, styles.body)}>
 							{events.map((event) => (
 								<React.Fragment key={event.id}>
 									<div>{event.attributes?.name}</div>
 									<div>{dayjs(event.attributes?.date).format("DD.MM.YYYY")}</div>
-									<div>
-										<ReactMarkdown>{event.attributes?.description ?? ""}</ReactMarkdown>
-									</div>
 								</React.Fragment>
 							))}
 						</div>

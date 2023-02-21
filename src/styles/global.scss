@@ -53,7 +53,7 @@ body {
 }
 h1 {
 	font-size: 2.5em;
-	margin: 10px 0 20px 0;
+	margin: 0px 0 20px 0;
 	line-height: normal;
 	@media only screen and (max-width: 720px) {
 		font-size: 1.5em;
@@ -79,11 +79,14 @@ button {
 }
 .upperspacer {
 	margin-top: 85px;
-	padding: 50px 0 0 0;
+	padding: 25px 0 0 0;
 	border-top: 4px solid;
 	position: relative;
 	& > div {
 		margin: 0 var(--margin-inner);
+	}
+	p:first-of-type {
+		margin-top: 0;
 	}
 	@media only screen and (max-width: 720px) {
 		margin-top: 35px;
