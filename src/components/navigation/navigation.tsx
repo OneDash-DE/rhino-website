@@ -39,7 +39,6 @@ export const Navigation = ({ socialMediaLinks }: NavigationProps) => {
 					</a>
 				</div>
 				<SocialMediaIcons socialMediaLinks={socialMediaLinks} className={styles.socialMediaIcons} />
-				<div className={styles.navBg}></div>
 			</nav>
 			<button
 				onClick={() => setMobileNavOpen(!mobileNavOpen)}
