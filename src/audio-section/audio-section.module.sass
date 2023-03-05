@@ -4,8 +4,9 @@
     gap: 1rem
 
 .grid
-    display: grid
+    display: flex
     gap: 1rem
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+    flex-wrap: wrap
     @media only screen and (min-width: 720px)
+        display: grid
         grid-template-columns: repeat(auto-fit, minmax(500px, 1fr))

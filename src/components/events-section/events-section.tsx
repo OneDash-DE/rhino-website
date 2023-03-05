@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import dayjs from "dayjs";
-import React from "react";
+import React, { useMemo } from "react";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { EventEntity, HomepageEntity } from "types/gql-api";
 import styles from "./events-section.module.sass";
@@ -11,7 +11,11 @@ interface EventsSectionProps {
 }
 
 export const EventsSection = (props: EventsSectionProps) => {
-	const events = props.events.filter((x) => dayjs(x.attributes?.date).isAfter(dayjs()));
+	const events = useMemo(() => {
+		const newEvents = props.events.filter((x) => dayjs(x.attributes?.date).isAfter(dayjs()));
+		return newEvents.sort((a, b) => dayjs(a.attributes?.date).diff(dayjs(b.attributes?.date)));
+	}, [props.events]);
+
 	return (
 		<div id="live" className={classNames("upperspacer", styles.events)}>
 			<h1>Live</h1>

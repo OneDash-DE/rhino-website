@@ -19,7 +19,7 @@ export const Header = ({ socialMediaLinks, homepage }: HeaderProps) => {
 					<div
 						style={{
 							position: "relative",
-							width: "clamp(350px, 55vw, 700px)",
+							width: "clamp(200px, 55vw, 700px)",
 							paddingBottom: `${((logo.height ?? 0) / (logo.width ?? 0)) * 100}%`,
 						}}>
 						<Image fill src={logo.url} alt="The Rhino" />

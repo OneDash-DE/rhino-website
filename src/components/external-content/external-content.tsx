@@ -11,11 +11,11 @@ interface ExternalContentProps {
 
 export const ExternalContent = ({ src, type, onPrivacyPolicyClick }: ExternalContentProps) => {
 	const id = useId();
-	const [allowYoutube, setAllowYoutube] = useLocalStorage(`allow-${type}`, false, type === "youtube" ? 1 : 2);
+	const [allowed, setAllowed] = useLocalStorage(`allow-${type}`, false, type === "youtube" ? 1 : 2);
 
 	return (
-		<div className={classNames(styles.content, styles[type])}>
-			{allowYoutube ? (
+		<div className={classNames(styles.content, styles[type], !allowed && styles.disabled)}>
+			{allowed ? (
 				<iframe
 					title={`External content from ${type}`}
 					frameBorder="0"
@@ -25,7 +25,7 @@ export const ExternalContent = ({ src, type, onPrivacyPolicyClick }: ExternalCon
 			) : (
 				<div>
 					<label htmlFor={id}>
-						<input onChange={() => setAllowYoutube(true)} id={id} type="checkbox" />
+						<input onChange={() => setAllowed(true)} id={id} type="checkbox" />
 						<span></span>
 						<p>I agree to load external content from {type === "youtube" ? "Youtube" : "Spotify"}.</p>
 					</label>
