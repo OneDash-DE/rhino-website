@@ -29,7 +29,7 @@ export const LandingPage = (props: LandingPageProps) => {
 	const [allowSpotify, setAllowSpotify] = useLocalStorage(`allow-spotify`, false, 2);
 
 	return (
-		<div>
+		<div id="home">
 			<Header socialMediaLinks={props.socialMediaLinks} homepage={props.homepage} />
 			<Navigation socialMediaLinks={props.socialMediaLinks} />
 			<HeroImage homepage={props.homepage} />
