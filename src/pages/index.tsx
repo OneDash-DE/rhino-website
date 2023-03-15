@@ -4,6 +4,7 @@ import apolloClient from "@/logic/apollo-client";
 import {
 	EventsDocument,
 	EventsQuery,
+	EventsQueryVariables,
 	ExternalContentDocument,
 	ExternalContentQuery,
 	HomepageDocument,
@@ -14,6 +15,7 @@ import {
 	SocialMediasDocument,
 	SocialMediasQuery,
 } from "types/gql-api";
+import dayjs from "dayjs";
 
 export default function Home(props: LandingPageProps) {
 	const {
@@ -61,7 +63,12 @@ export async function getStaticProps() {
 	const socialMediaRes = await apolloClient.query<SocialMediasQuery>({ query: SocialMediasDocument });
 	const homepageRes = await apolloClient.query<HomepageQuery>({ query: HomepageDocument });
 	const externalRes = await apolloClient.query<ExternalContentQuery>({ query: ExternalContentDocument });
-	const eventsRes = await apolloClient.query<EventsQuery>({ query: EventsDocument });
+	const eventsRes = await apolloClient.query<EventsQuery, EventsQueryVariables>({
+		query: EventsDocument,
+		variables: {
+			yesterday: dayjs().subtract(1, "day").format("YYYY-MM-DD"),
+		},
+	});
 	const photoRes = await apolloClient.query<PhotosQuery>({ query: PhotosDocument });
 
 	return {
@@ -72,5 +79,6 @@ export async function getStaticProps() {
 			events: eventsRes.data.events?.data ?? [],
 			photos: photoRes.data.photo?.data?.attributes?.photos.data ?? [],
 		} as LandingPageProps,
+		revalidate: 60 * 60, // 1 hour
 	};
 }

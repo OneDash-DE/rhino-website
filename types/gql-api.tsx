@@ -1242,8 +1242,8 @@ export const BasicImageFragmentDoc = gql`
 	}
 `;
 export const EventsDocument = gql`
-	query events {
-		events {
+	query events($yesterday: Date!) {
+		events(sort: "date:asc", pagination: { limit: 150 }, filters: { date: { gt: $yesterday } }) {
 			data {
 				id
 				attributes {
@@ -1267,10 +1267,11 @@ export const EventsDocument = gql`
  * @example
  * const { data, loading, error } = useEventsQuery({
  *   variables: {
+ *      yesterday: // value for 'yesterday'
  *   },
  * });
  */
-export function useEventsQuery(baseOptions?: Apollo.QueryHookOptions<EventsQuery, EventsQueryVariables>) {
+export function useEventsQuery(baseOptions: Apollo.QueryHookOptions<EventsQuery, EventsQueryVariables>) {
 	const options = { ...defaultOptions, ...baseOptions };
 	return Apollo.useQuery<EventsQuery, EventsQueryVariables>(EventsDocument, options);
 }
@@ -1487,7 +1488,9 @@ export function useSocialMediasLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type SocialMediasQueryHookResult = ReturnType<typeof useSocialMediasQuery>;
 export type SocialMediasLazyQueryHookResult = ReturnType<typeof useSocialMediasLazyQuery>;
 export type SocialMediasQueryResult = Apollo.QueryResult<SocialMediasQuery, SocialMediasQueryVariables>;
-export type EventsQueryVariables = Exact<{ [key: string]: never }>;
+export type EventsQueryVariables = Exact<{
+	yesterday: Scalars["Date"];
+}>;
 
 export type EventsQuery = {
 	__typename?: "Query";

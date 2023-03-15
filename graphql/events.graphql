@@ -1,5 +1,5 @@
-query events {
-	events {
+query events($yesterday: Date!) {
+	events(sort: "date:asc", pagination: { limit: 150 }, filters: { date: { gt: $yesterday } }) {
 		data {
 			id
 			attributes {
