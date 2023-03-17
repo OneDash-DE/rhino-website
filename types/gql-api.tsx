@@ -1400,7 +1400,7 @@ export const PhotosDocument = gql`
 			data {
 				id
 				attributes {
-					photos {
+					photos(pagination: { limit: 50 }) {
 						data {
 							id
 							attributes {
