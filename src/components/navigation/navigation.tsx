@@ -1,12 +1,11 @@
 import classNames from "classnames";
-import Image from "next/image";
 import { useState } from "react";
-import { SocialMediaEntity } from "types/gql-api";
 import { SocialMediaIcons } from "../social-media-icons/social-media-icons";
 import styles from "./navigation.module.sass";
+import { SocialMediasQuery } from "types/gql-api";
 
 export interface NavigationProps {
-	socialMediaLinks: SocialMediaEntity[];
+	socialMediaLinks: SocialMediasQuery["socialMedias"];
 }
 
 export const Navigation = ({ socialMediaLinks }: NavigationProps) => {
