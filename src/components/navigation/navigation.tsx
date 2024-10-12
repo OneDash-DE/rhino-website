@@ -30,13 +30,6 @@ export const Navigation = ({ socialMediaLinks }: NavigationProps) => {
 					<a onClick={() => setMobileNavOpen(false)} href="#photos">
 						Photos
 					</a>
-					<a
-						onClick={() => setMobileNavOpen(false)}
-						href="https://therhino.bandcamp.com/releases"
-						target="_blank"
-						rel="noreferrer">
-						Store
-					</a>
 				</div>
 				<SocialMediaIcons socialMediaLinks={socialMediaLinks} className={styles.socialMediaIcons} />
 			</nav>
