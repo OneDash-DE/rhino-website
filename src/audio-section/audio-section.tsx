@@ -1,5 +1,5 @@
 import React from "react";
-import { ExternalContentQuery, HomepageEntity } from "types/gql-api";
+import { ExternalContentQuery } from "types/gql-api";
 import { ExternalContent } from "../components/external-content/external-content";
 import styles from "./audio-section.module.sass";
 
@@ -14,21 +14,21 @@ export const AudioSection = ({ externalContent, onPrivacyPolicyClick }: AudioSec
 			<h1>Audio</h1>
 			<div className={styles.list}>
 				<div className={styles.list}>
-					{externalContent.youtubeVideos?.data.map((link) => (
+					{externalContent.youtubeVideos?.map((link) => (
 						<ExternalContent
-							key={link.id}
+							key={link?.documentId}
 							onPrivacyPolicyClick={onPrivacyPolicyClick}
-							src={link.attributes!.embeddedLink}
+							src={link!.embeddedLink}
 							type="youtube"
 						/>
 					))}
 				</div>
 				<div className={styles.grid}>
-					{externalContent.spotifyLinks?.data.map((link) => (
+					{externalContent.spotifyLinks?.map((link) => (
 						<ExternalContent
-							key={link.id}
+							key={link?.documentId}
 							onPrivacyPolicyClick={onPrivacyPolicyClick}
-							src={link.attributes!.embeddedLink}
+							src={link!.embeddedLink}
 							type="spotify"
 						/>
 					))}

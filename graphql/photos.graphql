@@ -1,17 +1,8 @@
 query photos {
 	photo {
-		data {
-			id
-			attributes {
-				photos(pagination: { limit: 50 }) {
-					data {
-						id
-						attributes {
-							...BasicImage
-						}
-					}
-				}
-			}
+		documentId
+		photos(pagination: { limit: 50 }) {
+			...BasicImage
 		}
 	}
 }

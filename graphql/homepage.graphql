@@ -1,38 +1,26 @@
 query homepage {
 	homepage {
-		data {
-			attributes {
-				aboutText
-				termsAndConditions
-				privacyPolicy
-				imprint
-				liveText
-				metaDescription
-				metaTitle
-				metaKeywords
-				metaPageUrl
-				logoImage {
-					data {
-						id
-						attributes {
-							...BasicImage
-						}
-					}
-				}
-				heroImage {
-					data {
-						id
-						attributes {
-							...BasicImage
-						}
-					}
-				}
-			}
+		documentId
+		aboutText
+		termsAndConditions
+		privacyPolicy
+		imprint
+		liveText
+		metaDescription
+		metaTitle
+		metaKeywords
+		metaPageUrl
+		logoImage {
+			...BasicImage
+		}
+		heroImage {
+			...BasicImage
 		}
 	}
 }
 
 fragment BasicImage on UploadFile {
+	documentId
 	url
 	alternativeText
 	width

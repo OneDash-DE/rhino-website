@@ -1,17 +1,9 @@
 query socialMedias {
 	socialMedias {
-		data {
-			id
-			attributes {
-				url
-				logo {
-					data {
-						attributes {
-							...BasicImage
-						}
-					}
-				}
-			}
+		documentId
+		url
+		logo {
+			...BasicImage
 		}
 	}
 }

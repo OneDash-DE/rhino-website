@@ -1,39 +1,46 @@
 import classNames from "classnames";
 import dayjs from "dayjs";
 import React, { useMemo } from "react";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import { EventEntity, HomepageEntity } from "types/gql-api";
+import ReactMarkdown from "react-markdown";
 import styles from "./events-section.module.sass";
+import { EventsQuery, HomepageQuery } from "types/gql-api";
 
 interface EventsSectionProps {
-	events: EventEntity[];
-	homepage: HomepageEntity;
+	events: EventsQuery["events"];
+	homepage: HomepageQuery["homepage"];
 }
 
 export const EventsSection = (props: EventsSectionProps) => {
 	const events = useMemo(() => {
-		const newEvents = props.events.filter((x) => dayjs(x.attributes?.date).isAfter(dayjs()));
-		return newEvents.sort((a, b) => dayjs(a.attributes?.date).diff(dayjs(b.attributes?.date)));
+		return props.events.sort((a, b) => dayjs(b?.date).diff(dayjs(a?.date)));
 	}, [props.events]);
 
 	return (
 		<div id="live" className={classNames("upperspacer", styles.events)}>
 			<h1>Live</h1>
 			<div>
-				<ReactMarkdown>{props.homepage.attributes?.liveText ?? ""}</ReactMarkdown>
+				<ReactMarkdown>{props.homepage?.liveText ?? ""}</ReactMarkdown>
 
 				{events.length > 0 ? (
 					<>
 						<div className={classNames(styles.table, styles.header)}>
-							<div>Event</div>
-							<div>Date</div>
+							<div className={classNames(styles.row)} key={"header"}>
+								<div>Event</div>
+								<div>Date</div>
+							</div>
 						</div>
 						<div className={classNames(styles.table, styles.body)}>
 							{events.map((event) => (
-								<React.Fragment key={event.id}>
-									<div>{event.attributes?.name}</div>
-									<div>{dayjs(event.attributes?.date).format("DD.MM.YYYY")}</div>
-								</React.Fragment>
+								<div
+									className={classNames(
+										styles.row,
+										event?.canceled && styles.canceled,
+										dayjs(event?.date).isBefore(dayjs()) && styles.past,
+									)}
+									key={event?.documentId}>
+									<div>{event?.name}</div>
+									<div>{dayjs(event?.date).format("DD.MM.YYYY")}</div>
+								</div>
 							))}
 						</div>
 					</>

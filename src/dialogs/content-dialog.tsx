@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import { Dialog } from "onedash-dialog";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 interface ContentDialogProps {
 	isOpen: boolean;

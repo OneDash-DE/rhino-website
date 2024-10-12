@@ -1,5 +1,4 @@
 import React from "react";
-import { EventEntity, ExternalContentQuery, HomepageEntity, PhotoEntity, SocialMediaEntity, UploadFileEntity } from "types/gql-api";
 import { AboutSection } from "./about";
 import { AudioSection } from "../audio-section/audio-section";
 import { EventsSection } from "./events-section/events-section";
@@ -10,15 +9,16 @@ import { Photos } from "./photos/photos";
 import { Footer } from "./footer/footer";
 import { ContentDialog } from "@/dialogs/content-dialog";
 import { useLocalStorage } from "@/logic/use-local-storage-hook";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
+import ReactMarkdown from "react-markdown";
 import { CookieInfo } from "./cookie-info";
+import { EventsQuery, ExternalContentQuery, HomepageQuery, PhotosQuery, SocialMediasQuery } from "types/gql-api";
 
 export interface LandingPageProps {
-	socialMediaLinks: SocialMediaEntity[];
-	homepage: HomepageEntity;
+	socialMediaLinks: SocialMediasQuery["socialMedias"];
+	homepage: HomepageQuery["homepage"];
 	externalContent: ExternalContentQuery;
-	events: EventEntity[];
-	photos: UploadFileEntity[];
+	events: EventsQuery["events"];
+	photo: PhotosQuery["photo"];
 }
 
 export const LandingPage = (props: LandingPageProps) => {
@@ -38,7 +38,7 @@ export const LandingPage = (props: LandingPageProps) => {
 				<AboutSection homepage={props.homepage} />
 				<EventsSection homepage={props.homepage} events={props.events} />
 				<AudioSection onPrivacyPolicyClick={() => setPrivacyPolicyDialogOpen(true)} externalContent={props.externalContent} />
-				<Photos photos={props.photos} />
+				<Photos photos={props.photo} />
 			</div>
 
 			<Footer
@@ -48,7 +48,7 @@ export const LandingPage = (props: LandingPageProps) => {
 			/>
 
 			<ContentDialog isOpen={privacyPolicyDialogOpen} onClose={() => setPrivacyPolicyDialogOpen(false)}>
-				<ReactMarkdown>{props.homepage.attributes?.privacyPolicy ?? ""}</ReactMarkdown>
+				<ReactMarkdown>{props.homepage?.privacyPolicy ?? ""}</ReactMarkdown>
 				<h2>External Content Consent</h2>
 				<p>
 					We use external content from Youtube and Spotify. If you want to see this content, please check the boxes below. If you
@@ -77,10 +77,10 @@ export const LandingPage = (props: LandingPageProps) => {
 				</div>
 			</ContentDialog>
 			<ContentDialog isOpen={imprintDialogOpen} onClose={() => setImprintDialogOpen(false)}>
-				<ReactMarkdown>{props.homepage.attributes?.imprint ?? ""}</ReactMarkdown>
+				<ReactMarkdown>{props.homepage?.imprint ?? ""}</ReactMarkdown>
 			</ContentDialog>
 			<ContentDialog isOpen={termsAndConditionsDialogOpen} onClose={() => setTermsAndConditionsDialogOpen(false)}>
-				<ReactMarkdown>{props.homepage.attributes?.termsAndConditions ?? ""}</ReactMarkdown>
+				<ReactMarkdown>{props.homepage?.termsAndConditions ?? ""}</ReactMarkdown>
 			</ContentDialog>
 
 			<CookieInfo onPrivacyPolicyClick={() => setPrivacyPolicyDialogOpen(true)} />

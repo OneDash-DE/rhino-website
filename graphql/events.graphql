@@ -1,11 +1,8 @@
-query events($yesterday: Date!) {
-	events(sort: "date:asc", pagination: { limit: 150 }, filters: { date: { gt: $yesterday } }) {
-		data {
-			id
-			attributes {
-				date
-				name
-			}
-		}
+query events($startDate: Date!) {
+	events(sort: "date:asc", pagination: { limit: 150 }, filters: { date: { gt: $startDate } }) {
+		documentId
+		date
+		name
+		canceled
 	}
 }

@@ -1,18 +1,10 @@
 query externalContent {
 	spotifyLinks {
-		data {
-			id
-			attributes {
-				embeddedLink
-			}
-		}
+		documentId
+		embeddedLink
 	}
 	youtubeVideos {
-		data {
-			id
-			attributes {
-				embeddedLink
-			}
-		}
+		documentId				
+		embeddedLink	
 	}
 }
